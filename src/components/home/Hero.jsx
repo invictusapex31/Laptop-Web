@@ -46,8 +46,8 @@ const Hero = () => {
   }
 
   return (
-    <section className="min-h-screen relative overflow-hidden circuit-pattern">
-      <div className="absolute inset-0 bg-gradient-to-b from-deepBlack via-charcoal to-deepBlack" />
+    <section className="min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
         <div className="text-center mb-12">
@@ -55,18 +55,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl md:text-7xl lg:text-hero font-bold text-white mb-6 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
             Engineer Your
             <br />
-            <span className="text-gradient">Perfect Laptop</span>
+            <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+              Perfect Laptop
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
+            className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto"
           >
             True modularity. Unlimited possibilities. Built by you.
           </motion.p>
@@ -86,7 +88,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="h-[500px] rounded-2xl overflow-hidden"
+          className="h-[500px] rounded-2xl overflow-hidden bg-gray-800/50"
         >
           <Canvas shadows>
             <PerspectiveCamera makeDefault position={[0, 2, 6]} />
@@ -98,9 +100,9 @@ const Hero = () => {
               minPolarAngle={Math.PI / 3}
               maxPolarAngle={Math.PI / 2}
             />
-            <ambientLight intensity={0.3} />
-            <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-            <pointLight position={[-10, -10, -5]} intensity={0.3} color="#ff6b35" />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1.5} castShadow />
+            <pointLight position={[-10, -10, -5]} intensity={0.5} color="#ff6b35" />
             <Environment preset="city" />
             <Suspense fallback={null}>
               <HeroLaptop />

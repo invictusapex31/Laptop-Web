@@ -22,14 +22,14 @@ const LeftSidebar = () => {
   const activeData = categories.find(c => c.id === activeCategory)
 
   return (
-    <div className="w-80 bg-charcoal shadow-2xl flex flex-col border-r border-gray-800">
-      <div className="p-6 border-b border-gray-800">
+    <div className="w-80 bg-gray-800 shadow-2xl flex flex-col border-r border-gray-700">
+      <div className="p-6 border-b border-gray-700">
         <h2 className="text-2xl font-bold text-white tracking-tight">Components</h2>
         <p className="text-sm text-gray-400 mt-1">Select your configuration</p>
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="grid grid-cols-2 gap-2 p-4 border-b border-gray-800">
+        <div className="grid grid-cols-2 gap-2 p-4 border-b border-gray-700">
           {categories.map((cat) => {
             const Icon = cat.icon
             return (
@@ -41,7 +41,7 @@ const LeftSidebar = () => {
                 className={`p-3 rounded-lg flex flex-col items-center gap-2 transition border ${
                   activeCategory === cat.id
                     ? 'bg-primary text-white border-primary'
-                    : 'bg-deepBlack text-gray-400 hover:text-white border-gray-800 hover:border-gray-700'
+                    : 'bg-gray-900 text-gray-400 hover:text-white border-gray-700 hover:border-gray-600'
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -60,7 +60,7 @@ const LeftSidebar = () => {
               className={`p-4 rounded-lg cursor-pointer transition border ${
                 selectedComponents[activeCategory]?.id === item.id
                   ? 'border-primary bg-primary/10'
-                  : 'border-gray-800 hover:border-gray-700 bg-deepBlack'
+                  : 'border-gray-700 hover:border-gray-600 bg-gray-900'
               }`}
             >
               <div className="flex justify-between items-start mb-2">

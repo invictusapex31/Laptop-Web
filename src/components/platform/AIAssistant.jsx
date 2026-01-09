@@ -152,7 +152,7 @@ const AIAssistant = () => {
               className={`max-w-[85%] p-4 rounded-xl ${
                 msg.role === 'user'
                   ? 'bg-primary text-white'
-                  : 'bg-deepBlack text-gray-200 border border-gray-800'
+                  : 'bg-gray-900 text-gray-200 border border-gray-700'
               }`}
             >
               {msg.role === 'assistant' && (
@@ -168,7 +168,7 @@ const AIAssistant = () => {
             animate={{ opacity: 1 }}
             className="flex justify-start"
           >
-            <div className="bg-deepBlack text-gray-400 p-4 rounded-xl border border-gray-800">
+            <div className="bg-gray-900 text-gray-400 p-4 rounded-xl border border-gray-700">
               <div className="flex gap-1">
                 <span className="animate-bounce">●</span>
                 <span className="animate-bounce delay-100">●</span>
@@ -180,7 +180,7 @@ const AIAssistant = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-6 border-t border-gray-800">
+      <div className="p-6 border-t border-gray-700">
         <div className="flex gap-2">
           <input
             type="text"
@@ -188,14 +188,14 @@ const AIAssistant = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Ask me anything..."
-            className="flex-1 px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white placeholder-gray-500"
+            className="flex-1 px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 focus:border-primary outline-none transition text-white placeholder-gray-500"
           />
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleVoiceInput}
             className={`p-3 rounded-lg transition ${
-              isListening ? 'bg-primary text-white' : 'bg-deepBlack text-gray-400 border border-gray-700'
+              isListening ? 'bg-primary text-white' : 'bg-gray-900 text-gray-400 border border-gray-700'
             }`}
           >
             {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}

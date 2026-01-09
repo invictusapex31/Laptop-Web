@@ -11,7 +11,7 @@ const Viewer3D = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="flex-1 relative bg-gradient-to-b from-deepBlack to-charcoal">
+    <div className="flex-1 relative bg-gradient-to-b from-gray-900 to-gray-800">
       <Canvas shadows dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 2, 6]} fov={50} />
         <OrbitControls
@@ -47,7 +47,7 @@ const Viewer3D = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => navigate('/')}
-          className="bg-charcoal px-4 py-2 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700 flex items-center gap-2"
+          className="bg-gray-800 px-4 py-2 rounded-lg shadow-elevated font-semibold text-white hover:bg-gray-700 transition border border-gray-700 flex items-center gap-2"
         >
           <Home className="w-4 h-4" />
           Home
@@ -60,7 +60,7 @@ const Viewer3D = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setIsLidOpen(!isLidOpen)}
-          className="bg-charcoal px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700"
+          className="bg-gray-800 px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-gray-700 transition border border-gray-700"
         >
           {isLidOpen ? 'Close Lid' : 'Open Lid'}
         </motion.button>
@@ -69,7 +69,7 @@ const Viewer3D = () => {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setIsExploded(!isExploded)}
-          className="bg-charcoal px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700 flex items-center gap-2"
+          className="bg-gray-800 px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-gray-700 transition border border-gray-700 flex items-center gap-2"
         >
           {isExploded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           {isExploded ? 'Normal View' : 'Exploded View'}

@@ -8,7 +8,7 @@ const HomePage = () => {
   const { isAuthModalOpen } = useAuth()
 
   return (
-    <div className="min-h-screen bg-deepBlack">
+    <div className="min-h-screen bg-gray-900">
       <Navbar />
       <Hero />
       <Features />

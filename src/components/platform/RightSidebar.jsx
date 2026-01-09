@@ -10,14 +10,14 @@ const RightSidebar = () => {
   const [activeTab, setActiveTab] = useState('ai')
 
   return (
-    <div className="w-96 bg-charcoal shadow-2xl flex flex-col border-l border-gray-800">
-      <div className="flex border-b border-gray-800">
+    <div className="w-96 bg-gray-800 shadow-2xl flex flex-col border-l border-gray-700">
+      <div className="flex border-b border-gray-700">
         <button
           onClick={() => setActiveTab('ai')}
           className={`flex-1 py-4 font-semibold transition ${
             activeTab === 'ai'
               ? 'bg-primary text-white'
-              : 'text-gray-400 hover:text-white hover:bg-deepBlack'
+              : 'text-gray-400 hover:text-white hover:bg-gray-900'
           }`}
         >
           AI Assistant
@@ -27,7 +27,7 @@ const RightSidebar = () => {
           className={`flex-1 py-4 font-semibold transition ${
             activeTab === 'summary'
               ? 'bg-primary text-white'
-              : 'text-gray-400 hover:text-white hover:bg-deepBlack'
+              : 'text-gray-400 hover:text-white hover:bg-gray-900'
           }`}
         >
           Summary
@@ -37,7 +37,7 @@ const RightSidebar = () => {
           className={`flex-1 py-4 font-semibold transition ${
             activeTab === 'specs'
               ? 'bg-primary text-white'
-              : 'text-gray-400 hover:text-white hover:bg-deepBlack'
+              : 'text-gray-400 hover:text-white hover:bg-gray-900'
           }`}
         >
           Specs
@@ -52,7 +52,7 @@ const RightSidebar = () => {
             <h3 className="text-xl font-bold text-white mb-4">Configuration</h3>
             
             {Object.entries(selectedComponents).map(([key, component]) => (
-              <div key={key} className="flex justify-between items-start p-3 bg-deepBlack rounded-lg border border-gray-800">
+              <div key={key} className="flex justify-between items-start p-3 bg-gray-900 rounded-lg border border-gray-700">
                 <div>
                   <p className="font-semibold text-white capitalize text-sm">{key}</p>
                   <p className="text-xs text-gray-400 font-mono mt-1">{component.name}</p>
@@ -79,7 +79,7 @@ const RightSidebar = () => {
             </div>
           </div>
 
-          <div className="p-6 border-t border-gray-800 space-y-3">
+          <div className="p-6 border-t border-gray-700 space-y-3">
             <Button className="w-full flex items-center justify-center gap-2">
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
@@ -95,7 +95,7 @@ const RightSidebar = () => {
           <h3 className="text-xl font-bold text-white mb-6">Technical Specifications</h3>
           <div className="space-y-4 font-mono text-sm">
             {Object.entries(selectedComponents).map(([key, component]) => (
-              <div key={key} className="bg-deepBlack rounded-lg p-4 border border-gray-800">
+              <div key={key} className="bg-gray-900 rounded-lg p-4 border border-gray-700">
                 <p className="text-primary font-bold mb-2 uppercase text-xs">{key}</p>
                 <p className="text-white mb-1">{component.name}</p>
                 <p className="text-gray-400 text-xs">{component.specs}</p>

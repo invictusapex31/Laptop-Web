@@ -18,7 +18,7 @@ const Platform = () => {
   if (!user) return null
 
   return (
-    <div className="h-screen flex bg-deepBlack overflow-hidden">
+    <div className="h-screen flex bg-gray-900 overflow-hidden">
       <LeftSidebar />
       <Viewer3D />
       <RightSidebar />

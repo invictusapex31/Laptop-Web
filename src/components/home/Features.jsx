@@ -11,7 +11,7 @@ const Features = () => {
   ]
 
   return (
-    <section id="features" className="py-32 px-6 bg-deepBlack">
+    <section id="features" className="py-32 px-6 bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
@@ -38,7 +38,7 @@ const Features = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-charcoal rounded-xl p-6 border border-gray-800 hover:border-primary transition-all duration-300"
+                className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <Icon className="w-6 h-6 text-primary" />
@@ -46,7 +46,7 @@ const Features = () => {
                 </div>
                 <div className="space-y-3">
                   {comp.items.slice(0, 2).map((item) => (
-                    <div key={item.id} className="bg-deepBlack rounded-lg p-3">
+                    <div key={item.id} className="bg-gray-900 rounded-lg p-3">
                       <p className="text-white font-medium text-sm mb-1">{item.name}</p>
                       <p className="text-gray-500 text-xs font-mono">{item.specs}</p>
                       <p className="text-primary font-bold text-sm mt-2">

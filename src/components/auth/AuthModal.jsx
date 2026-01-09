@@ -36,7 +36,7 @@ const AuthModal = () => {
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
-          className="bg-charcoal rounded-xl p-8 max-w-md w-full shadow-elevated border border-gray-800"
+          className="bg-gray-800 rounded-xl p-8 max-w-md w-full shadow-elevated border border-gray-700"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-8">
@@ -58,7 +58,7 @@ const AuthModal = () => {
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 focus:border-primary outline-none transition text-white"
                 required
               />
             )}
@@ -67,7 +67,7 @@ const AuthModal = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
+              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 focus:border-primary outline-none transition text-white"
               required
             />
             <input
@@ -75,7 +75,7 @@ const AuthModal = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
+              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 focus:border-primary outline-none transition text-white"
               required
             />
             <Button type="submit" className="w-full">
