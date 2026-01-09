@@ -1,76 +1,63 @@
 import { motion } from 'framer-motion'
-import { Cpu, Box, Sparkles } from 'lucide-react'
-import { Button } from '../ui/Button'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { Cpu, Box, Sparkles, Monitor } from 'lucide-react'
+import { componentsData } from '../../data/components'
 
 const Features = () => {
-  const navigate = useNavigate()
-  const { user, setIsAuthModalOpen } = useAuth()
-
-  const features = [
-    {
-      icon: <Box className="w-12 h-12" />,
-      title: 'Modular Design',
-      description: 'Choose every component from screen to storage. Build exactly what you need.',
-      color: 'from-orange-400 to-red-400'
-    },
-    {
-      icon: <Cpu className="w-12 h-12" />,
-      title: '3D Visualization',
-      description: 'See your laptop come to life in real-time 3D. Rotate, zoom, and explore.',
-      color: 'from-blue-400 to-purple-400'
-    },
-    {
-      icon: <Sparkles className="w-12 h-12" />,
-      title: 'AI Assistant',
-      description: 'Voice-powered configuration. Just tell us what you need, we\'ll build it.',
-      color: 'from-green-400 to-teal-400'
-    }
+  const components = [
+    { category: 'Display', icon: Monitor, items: componentsData.screens },
+    { category: 'CPU', icon: Cpu, items: componentsData.cpus },
+    { category: 'RAM', icon: Box, items: componentsData.ram },
+    { category: 'Storage', icon: Sparkles, items: componentsData.storage }
   ]
 
-  const handleConfigure = () => {
-    if (user) {
-      navigate('/platform')
-    } else {
-      setIsAuthModalOpen(true)
-    }
-  }
-
   return (
-    <section id="features" className="py-20 px-6">
+    <section id="features" className="py-32 px-6 bg-deepBlack">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-accent mb-16"
+          className="text-center mb-20"
         >
-          Why Choose Framex?
-        </motion.h2>
+          <h2 className="text-5xl md:text-section font-bold text-white mb-6">
+            Every Component. Your Choice.
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Professional-grade components with complete technical transparency.
+            No compromises, no locked specifications.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-6`}>
-                {feature.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-accent mb-4">{feature.title}</h3>
-              <p className="text-gray-600 mb-6">{feature.description}</p>
-              <div className="flex gap-3">
-                <Button onClick={handleConfigure} className="flex-1">Configure Now</Button>
-                <Button variant="outline" className="flex-1">Learn More</Button>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {components.map((comp, index) => {
+            const Icon = comp.icon
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-charcoal rounded-xl p-6 border border-gray-800 hover:border-primary transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <Icon className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-bold text-white">{comp.category}</h3>
+                </div>
+                <div className="space-y-3">
+                  {comp.items.slice(0, 2).map((item) => (
+                    <div key={item.id} className="bg-deepBlack rounded-lg p-3">
+                      <p className="text-white font-medium text-sm mb-1">{item.name}</p>
+                      <p className="text-gray-500 text-xs font-mono">{item.specs}</p>
+                      <p className="text-primary font-bold text-sm mt-2">
+                        {item.price === 0 ? 'Included' : `+$${item.price}`}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

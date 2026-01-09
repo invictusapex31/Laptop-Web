@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Mic, MicOff } from 'lucide-react'
+import { Send, Mic, MicOff, Sparkles } from 'lucide-react'
 import { useConfig } from '../../context/ConfigContext'
 import { componentsData } from '../../data/components'
 
 const AIAssistant = () => {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! I\'m your AI assistant. Tell me what you need, like "Add 32GB RAM" or "Show me gaming GPUs".' }
+    { role: 'assistant', content: 'Hi! I\'m your AI configuration assistant. Try commands like "Add 32GB RAM" or "Configure for gaming".' }
   ])
   const [input, setInput] = useState('')
   const [isListening, setIsListening] = useState(false)
+  const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef(null)
   const { updateComponent } = useConfig()
 
@@ -28,79 +29,76 @@ const AIAssistant = () => {
     if (lowerText.includes('ram')) {
       if (lowerText.includes('8gb')) {
         updateComponent('ram', componentsData.ram[0])
-        return 'Added 8GB RAM to your configuration.'
+        return '✓ Added 8GB DDR5-5600 RAM to your configuration.'
       } else if (lowerText.includes('16gb')) {
         updateComponent('ram', componentsData.ram[1])
-        return 'Added 16GB RAM to your configuration.'
+        return '✓ Added 16GB DDR5-5600 RAM (+$75).'
       } else if (lowerText.includes('32gb')) {
         updateComponent('ram', componentsData.ram[2])
-        return 'Added 32GB RAM to your configuration.'
-      } else if (lowerText.includes('64gb')) {
-        updateComponent('ram', componentsData.ram[3])
-        return 'Added 64GB RAM to your configuration.'
+        return '✓ Added 32GB DDR5-5600 RAM (+$150).'
       }
     }
 
     // Storage commands
     if (lowerText.includes('storage') || lowerText.includes('ssd')) {
-      if (lowerText.includes('256gb')) {
+      if (lowerText.includes('256gb') || lowerText.includes('256')) {
         updateComponent('storage', componentsData.storage[0])
-        return 'Added 256GB SSD to your configuration.'
-      } else if (lowerText.includes('512gb')) {
+        return '✓ Added 256GB NVMe SSD (PCIe 4.0).'
+      } else if (lowerText.includes('512gb') || lowerText.includes('512')) {
         updateComponent('storage', componentsData.storage[1])
-        return 'Added 512GB SSD to your configuration.'
-      } else if (lowerText.includes('1tb')) {
+        return '✓ Added 512GB Samsung NVMe SSD (+$80).'
+      } else if (lowerText.includes('1tb') || lowerText.includes('1 tb')) {
         updateComponent('storage', componentsData.storage[2])
-        return 'Added 1TB SSD to your configuration.'
-      } else if (lowerText.includes('2tb')) {
-        updateComponent('storage', componentsData.storage[3])
-        return 'Added 2TB SSD to your configuration.'
+        return '✓ Added 1TB Samsung NVMe SSD (+$150).'
       }
     }
 
-    // GPU commands
-    if (lowerText.includes('gpu') || lowerText.includes('graphics')) {
-      if (lowerText.includes('gaming') || lowerText.includes('rtx')) {
-        if (lowerText.includes('4060')) {
-          updateComponent('gpu', componentsData.gpus[2])
-          return 'Added NVIDIA RTX 4060 for high-end gaming.'
-        } else {
-          updateComponent('gpu', componentsData.gpus[1])
-          return 'Added NVIDIA RTX 3050 for gaming.'
-        }
+    // CPU commands
+    if (lowerText.includes('cpu') || lowerText.includes('processor')) {
+      if (lowerText.includes('intel')) {
+        updateComponent('cpu', componentsData.cpus[0])
+        return '✓ Selected Intel Core Ultra 7 155H (16 cores, up to 4.8 GHz).'
+      } else if (lowerText.includes('amd') || lowerText.includes('ryzen')) {
+        updateComponent('cpu', componentsData.cpus[1])
+        return '✓ Selected AMD Ryzen 7 7840U (8 cores, up to 5.1 GHz).'
       }
     }
 
     // Color commands
     if (lowerText.includes('color') || lowerText.includes('body')) {
-      if (lowerText.includes('blue') || lowerText.includes('midnight')) {
+      if (lowerText.includes('black') || lowerText.includes('midnight')) {
         updateComponent('bodyColor', componentsData.bodyColors[2])
-        return 'Changed body color to Midnight Blue.'
+        return '✓ Changed body color to Midnight Black (+$30).'
       } else if (lowerText.includes('gray') || lowerText.includes('space')) {
+        updateComponent('bodyColor', componentsData.bodyColors[0])
+        return '✓ Changed body color to Space Gray.'
+      } else if (lowerText.includes('silver')) {
         updateComponent('bodyColor', componentsData.bodyColors[1])
-        return 'Changed body color to Space Gray.'
-      } else if (lowerText.includes('rose') || lowerText.includes('gold')) {
-        updateComponent('bodyColor', componentsData.bodyColors[3])
-        return 'Changed body color to Rose Gold.'
+        return '✓ Changed body color to Silver.'
       }
     }
 
     // Use case recommendations
     if (lowerText.includes('gaming')) {
-      updateComponent('gpu', componentsData.gpus[2])
       updateComponent('ram', componentsData.ram[2])
       updateComponent('storage', componentsData.storage[2])
-      return 'Configured for gaming: RTX 4060, 32GB RAM, 1TB SSD.'
+      updateComponent('cpu', componentsData.cpus[0])
+      return '✓ Gaming configuration: Intel Core Ultra 7, 32GB RAM, 1TB SSD. Total: +$350'
     }
 
-    if (lowerText.includes('programming') || lowerText.includes('development')) {
+    if (lowerText.includes('programming') || lowerText.includes('development') || lowerText.includes('coding')) {
       updateComponent('ram', componentsData.ram[2])
       updateComponent('storage', componentsData.storage[2])
-      updateComponent('cpu', componentsData.cpus[1])
-      return 'Configured for development: 32GB RAM, 1TB SSD, i7 processor.'
+      updateComponent('cpu', componentsData.cpus[0])
+      return '✓ Development configuration: Intel Core Ultra 7, 32GB RAM, 1TB SSD. Perfect for IDEs and containers.'
     }
 
-    return 'I can help you configure components. Try saying "Add 32GB RAM", "Change to midnight blue", or "Configure for gaming".'
+    if (lowerText.includes('battery') || lowerText.includes('long')) {
+      updateComponent('battery', componentsData.batteries[1])
+      return '✓ Upgraded to 61Wh battery for 10-12 hours of use (+$40).'
+    }
+
+    return 'I can help you configure components. Try: "Add 32GB RAM", "Configure for gaming", "Change to midnight black", or "Show me storage options".'
   }
 
   const handleSend = () => {
@@ -108,11 +106,13 @@ const AIAssistant = () => {
 
     const userMessage = { role: 'user', content: input }
     setMessages(prev => [...prev, userMessage])
+    setIsTyping(true)
 
     setTimeout(() => {
       const response = processCommand(input)
       setMessages(prev => [...prev, { role: 'assistant', content: response }])
-    }, 500)
+      setIsTyping(false)
+    }, 800)
 
     setInput('')
   }
@@ -149,20 +149,38 @@ const AIAssistant = () => {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] p-4 rounded-2xl ${
+              className={`max-w-[85%] p-4 rounded-xl ${
                 msg.role === 'user'
                   ? 'bg-primary text-white'
-                  : 'bg-neutral text-accent'
+                  : 'bg-deepBlack text-gray-200 border border-gray-800'
               }`}
             >
+              {msg.role === 'assistant' && (
+                <Sparkles className="w-4 h-4 inline mr-2 text-primary" />
+              )}
               {msg.content}
             </div>
           </motion.div>
         ))}
+        {isTyping && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex justify-start"
+          >
+            <div className="bg-deepBlack text-gray-400 p-4 rounded-xl border border-gray-800">
+              <div className="flex gap-1">
+                <span className="animate-bounce">●</span>
+                <span className="animate-bounce delay-100">●</span>
+                <span className="animate-bounce delay-200">●</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-6 border-t">
+      <div className="p-6 border-t border-gray-800">
         <div className="flex gap-2">
           <input
             type="text"
@@ -170,14 +188,14 @@ const AIAssistant = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Ask me anything..."
-            className="flex-1 px-4 py-3 rounded-lg border-2 border-neutral focus:border-primary outline-none transition"
+            className="flex-1 px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white placeholder-gray-500"
           />
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleVoiceInput}
             className={`p-3 rounded-lg transition ${
-              isListening ? 'bg-red-500 text-white' : 'bg-neutral text-accent'
+              isListening ? 'bg-primary text-white' : 'bg-deepBlack text-gray-400 border border-gray-700'
             }`}
           >
             {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}

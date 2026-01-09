@@ -29,23 +29,23 @@ const AuthModal = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
         onClick={() => setIsAuthModalOpen(false)}
       >
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
+          initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+          exit={{ scale: 0.95, opacity: 0 }}
+          className="bg-charcoal rounded-xl p-8 max-w-md w-full shadow-elevated border border-gray-800"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-accent">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-white">
               {isLogin ? 'Welcome Back' : 'Create Account'}
             </h2>
             <button
               onClick={() => setIsAuthModalOpen(false)}
-              className="text-gray-400 hover:text-accent transition"
+              className="text-gray-400 hover:text-white transition"
             >
               <X className="w-6 h-6" />
             </button>
@@ -58,7 +58,7 @@ const AuthModal = () => {
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-2 border-neutral focus:border-primary outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
                 required
               />
             )}
@@ -67,7 +67,7 @@ const AuthModal = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border-2 border-neutral focus:border-primary outline-none transition"
+              className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
               required
             />
             <input
@@ -75,7 +75,7 @@ const AuthModal = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border-2 border-neutral focus:border-primary outline-none transition"
+              className="w-full px-4 py-3 rounded-lg bg-deepBlack border border-gray-700 focus:border-primary outline-none transition text-white"
               required
             />
             <Button type="submit" className="w-full">
@@ -83,11 +83,11 @@ const AuthModal = () => {
             </Button>
           </form>
 
-          <p className="text-center mt-6 text-gray-600">
+          <p className="text-center mt-6 text-gray-400">
             {isLogin ? "Don't have an account? " : 'Already have an account? '}
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="text-primary font-medium hover:underline"
+              className="text-primary font-semibold hover:underline"
             >
               {isLogin ? 'Sign Up' : 'Login'}
             </button>

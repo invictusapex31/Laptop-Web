@@ -1,50 +1,231 @@
 export const componentsData = {
   screens: [
-    { id: 's1', name: '13.5" 2256x1504', size: '13.5"', resolution: '2256x1504', refreshRate: '60Hz', price: 299, specs: '3:2 aspect ratio, matte finish' },
-    { id: 's2', name: '13.5" 2256x1504 120Hz', size: '13.5"', resolution: '2256x1504', refreshRate: '120Hz', price: 449, specs: '3:2 aspect ratio, high refresh' },
-    { id: 's3', name: '15.6" 2560x1600', size: '15.6"', resolution: '2560x1600', refreshRate: '60Hz', price: 399, specs: '16:10 aspect ratio' }
+    { 
+      id: 's1', 
+      name: '13.5" 2256×1504', 
+      brand: 'BOE',
+      size: '13.5"', 
+      resolution: '2256×1504', 
+      aspectRatio: '3:2',
+      refreshRate: '60Hz', 
+      brightness: 400,
+      colorGamut: '100% sRGB',
+      price: 299, 
+      specs: '3:2 aspect ratio, matte finish, 400 nits',
+      weight: 280
+    },
+    { 
+      id: 's2', 
+      name: '13.5" 2256×1504 120Hz', 
+      brand: 'BOE',
+      size: '13.5"', 
+      resolution: '2256×1504', 
+      aspectRatio: '3:2',
+      refreshRate: '120Hz', 
+      brightness: 500,
+      colorGamut: '100% DCI-P3',
+      price: 449, 
+      specs: '3:2 aspect ratio, high refresh, 500 nits, DCI-P3',
+      weight: 290
+    }
   ],
   keyboards: [
-    { id: 'k1', name: 'US English', backlight: 'White', language: 'US', price: 49, specs: 'Standard layout' },
-    { id: 'k2', name: 'RGB Backlit', backlight: 'RGB', language: 'US', price: 89, specs: 'Per-key RGB' },
-    { id: 'k3', name: 'UK English', backlight: 'White', language: 'UK', price: 49, specs: 'UK layout' }
+    { 
+      id: 'k1', 
+      name: 'US English Keyboard', 
+      layout: 'US ANSI',
+      backlight: true, 
+      travel: '1.5mm',
+      price: 0, 
+      specs: 'Backlit, 1.5mm travel, US ANSI layout' 
+    }
   ],
   ram: [
-    { id: 'r1', capacity: '8GB', speed: 'DDR4-3200', price: 79, specs: 'Single channel' },
-    { id: 'r2', capacity: '16GB', speed: 'DDR4-3200', price: 149, specs: 'Dual channel' },
-    { id: 'r3', capacity: '32GB', speed: 'DDR4-3200', price: 299, specs: 'Dual channel' },
-    { id: 'r4', capacity: '64GB', speed: 'DDR5-4800', price: 599, specs: 'High performance' }
+    { 
+      id: 'r1', 
+      name: '8GB DDR5-5600',
+      capacity: '8GB', 
+      type: 'DDR5',
+      speed: '5600MHz', 
+      slots: 1,
+      brand: 'Crucial',
+      price: 0, 
+      specs: 'DDR5-5600, single channel' 
+    },
+    { 
+      id: 'r2', 
+      name: '16GB DDR5-5600',
+      capacity: '16GB', 
+      type: 'DDR5',
+      speed: '5600MHz', 
+      slots: 1,
+      brand: 'Crucial',
+      price: 75, 
+      specs: 'DDR5-5600, single channel' 
+    },
+    { 
+      id: 'r3', 
+      name: '32GB DDR5-5600',
+      capacity: '32GB', 
+      type: 'DDR5',
+      speed: '5600MHz', 
+      slots: 1,
+      brand: 'Crucial',
+      price: 150, 
+      specs: 'DDR5-5600, single channel' 
+    }
   ],
   storage: [
-    { id: 'st1', type: 'SSD', capacity: '256GB', speed: 'NVMe Gen3', price: 89, specs: 'PCIe 3.0' },
-    { id: 'st2', type: 'SSD', capacity: '512GB', speed: 'NVMe Gen4', price: 149, specs: 'PCIe 4.0' },
-    { id: 'st3', type: 'SSD', capacity: '1TB', speed: 'NVMe Gen4', price: 249, specs: 'PCIe 4.0' },
-    { id: 'st4', type: 'SSD', capacity: '2TB', speed: 'NVMe Gen4', price: 449, specs: 'High capacity' }
-  ],
-  gpus: [
-    { id: 'g1', name: 'Intel Iris Xe', vram: 'Shared', performance: 'Basic', price: 0, specs: 'Integrated graphics' },
-    { id: 'g2', name: 'NVIDIA RTX 3050', vram: '4GB', performance: 'Gaming', price: 399, specs: 'Entry gaming' },
-    { id: 'g3', name: 'NVIDIA RTX 4060', vram: '8GB', performance: 'High', price: 699, specs: 'High-end gaming' }
+    { 
+      id: 'st1', 
+      name: '256GB NVMe SSD',
+      type: 'NVMe PCIe 4.0', 
+      capacity: '256GB', 
+      read: '5000 MB/s',
+      write: '4000 MB/s',
+      formFactor: 'M.2 2280',
+      brand: 'WD',
+      price: 0, 
+      specs: 'PCIe 4.0, 5000/4000 MB/s' 
+    },
+    { 
+      id: 'st2', 
+      name: '512GB NVMe SSD',
+      type: 'NVMe PCIe 4.0', 
+      capacity: '512GB', 
+      read: '7000 MB/s',
+      write: '5000 MB/s',
+      formFactor: 'M.2 2280',
+      brand: 'Samsung',
+      price: 80, 
+      specs: 'PCIe 4.0, 7000/5000 MB/s' 
+    },
+    { 
+      id: 'st3', 
+      name: '1TB NVMe SSD',
+      type: 'NVMe PCIe 4.0', 
+      capacity: '1TB', 
+      read: '7400 MB/s',
+      write: '6500 MB/s',
+      formFactor: 'M.2 2280',
+      brand: 'Samsung',
+      price: 150, 
+      specs: 'PCIe 4.0, 7400/6500 MB/s' 
+    }
   ],
   cpus: [
-    { id: 'c1', name: 'Intel i5-1340P', cores: '12', speed: '4.6GHz', price: 0, specs: 'Base processor' },
-    { id: 'c2', name: 'Intel i7-1360P', cores: '12', speed: '5.0GHz', price: 199, specs: 'Performance' },
-    { id: 'c3', name: 'Intel i7-1370P', cores: '14', speed: '5.2GHz', price: 349, specs: 'High performance' }
+    { 
+      id: 'c1', 
+      name: 'Intel Core Ultra 7 155H',
+      brand: 'Intel',
+      cores: '16', 
+      threads: 22,
+      baseClock: '1.4 GHz',
+      boostClock: '4.8 GHz', 
+      tdp: 28,
+      socket: 'BGA',
+      performance: 85,
+      price: 0, 
+      specs: '16 cores, 22 threads, up to 4.8 GHz' 
+    },
+    { 
+      id: 'c2', 
+      name: 'AMD Ryzen 7 7840U',
+      brand: 'AMD',
+      cores: '8', 
+      threads: 16,
+      baseClock: '3.3 GHz',
+      boostClock: '5.1 GHz', 
+      tdp: 28,
+      socket: 'FP8',
+      performance: 82,
+      price: 0, 
+      specs: '8 cores, 16 threads, up to 5.1 GHz' 
+    }
   ],
   batteries: [
-    { id: 'b1', capacity: '55Wh', price: 0, specs: 'Standard battery' },
-    { id: 'b2', capacity: '61Wh', price: 49, specs: 'Extended battery' },
-    { id: 'b3', capacity: '85Wh', price: 99, specs: 'Maximum capacity' }
+    { 
+      id: 'b1', 
+      name: '55Wh Battery',
+      capacity: '55Wh', 
+      cells: 4,
+      estimatedLife: '8-10 hours',
+      weight: 280,
+      price: 0, 
+      specs: '55Wh, 8-10 hours typical use' 
+    },
+    { 
+      id: 'b2', 
+      name: '61Wh Battery',
+      capacity: '61Wh', 
+      cells: 4,
+      estimatedLife: '10-12 hours',
+      weight: 310,
+      price: 40, 
+      specs: '61Wh, 10-12 hours typical use' 
+    }
   ],
-  ports: [
-    { id: 'p1', types: '4x USB-C', quantity: 4, price: 0, specs: 'All USB-C' },
-    { id: 'p2', types: '2x USB-C, 2x USB-A', quantity: 4, price: 29, specs: 'Mixed ports' },
-    { id: 'p3', types: '2x USB-C, HDMI, Ethernet', quantity: 4, price: 49, specs: 'Versatile' }
+  expansionCards: [
+    { 
+      id: 'p1', 
+      name: 'USB-C',
+      type: 'USB-C 3.2 Gen 2',
+      dataRate: '10Gbps',
+      price: 9, 
+      specs: 'USB-C 3.2 Gen 2, 10Gbps' 
+    },
+    { 
+      id: 'p2', 
+      name: 'USB-A',
+      type: 'USB-A 3.2 Gen 2',
+      dataRate: '10Gbps',
+      price: 9, 
+      specs: 'USB-A 3.2 Gen 2, 10Gbps' 
+    },
+    { 
+      id: 'p3', 
+      name: 'HDMI',
+      type: 'HDMI 2.1',
+      resolution: '4K@120Hz',
+      price: 19, 
+      specs: 'HDMI 2.1, 4K@120Hz' 
+    },
+    { 
+      id: 'p4', 
+      name: 'Ethernet',
+      type: '2.5Gb Ethernet',
+      speed: '2500Mbps',
+      price: 39, 
+      specs: '2.5Gb Ethernet, 2500Mbps' 
+    }
   ],
   bodyColors: [
-    { id: 'bc1', name: 'Silver', hex: '#C0C0C0', finish: 'Matte', price: 0 },
-    { id: 'bc2', name: 'Space Gray', hex: '#4A4A4A', finish: 'Matte', price: 29 },
-    { id: 'bc3', name: 'Midnight Blue', hex: '#1A2332', finish: 'Metallic', price: 49 },
-    { id: 'bc4', name: 'Rose Gold', hex: '#B76E79', finish: 'Metallic', price: 49 }
+    { 
+      id: 'bc1', 
+      name: 'Space Gray', 
+      hex: '#4a4a4a', 
+      finish: 'matte-anodized',
+      metalness: 0.9,
+      roughness: 0.4,
+      price: 0 
+    },
+    { 
+      id: 'bc2', 
+      name: 'Silver', 
+      hex: '#c0c0c0', 
+      finish: 'brushed-aluminum',
+      metalness: 1.0,
+      roughness: 0.3,
+      price: 0 
+    },
+    { 
+      id: 'bc3', 
+      name: 'Midnight Black', 
+      hex: '#0a0a0a', 
+      finish: 'matte-anodized',
+      metalness: 0.8,
+      roughness: 0.5,
+      price: 30 
+    }
   ]
 }

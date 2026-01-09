@@ -7,14 +7,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FF9A56',
-        secondary: '#F5F0E8',
-        accent: '#2C2C2C',
-        neutral: '#E8E8E8',
+        primary: '#ff6b35',
+        deepBlack: '#0a0a0a',
+        charcoal: '#1f1f1f',
+        aluminumGray: '#4a4a4a',
+        warningAmber: '#ffa726',
+        successGreen: '#4caf50',
+        infoBlue: '#2196f3',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      fontSize: {
+        'hero': '72px',
+        'section': '48px',
+      },
+      boxShadow: {
+        'elevated': '0 20px 60px rgba(0, 0, 0, 0.3)',
+        'card': '0 4px 20px rgba(0, 0, 0, 0.1)',
       },
     },
   },

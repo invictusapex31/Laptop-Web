@@ -3,51 +3,84 @@ import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei
 import { motion } from 'framer-motion'
 import { useConfig } from '../../context/ConfigContext'
 import LaptopModel from './LaptopModel'
-import { Maximize2, Minimize2 } from 'lucide-react'
+import { Maximize2, Minimize2, RotateCcw, Home } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const Viewer3D = () => {
   const { isExploded, setIsExploded, isLidOpen, setIsLidOpen } = useConfig()
+  const navigate = useNavigate()
 
   return (
-    <div className="flex-1 relative">
-      <Canvas shadows>
-        <PerspectiveCamera makeDefault position={[0, 2, 5]} />
+    <div className="flex-1 relative bg-gradient-to-b from-deepBlack to-charcoal">
+      <Canvas shadows dpr={[1, 2]}>
+        <PerspectiveCamera makeDefault position={[0, 2, 6]} fov={50} />
         <OrbitControls
           enablePan={true}
           enableZoom={true}
           enableRotate={true}
           minDistance={3}
-          maxDistance={10}
+          maxDistance={12}
+          maxPolarAngle={Math.PI / 2}
+          enableDamping
+          dampingFactor={0.05}
         />
         
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-        <pointLight position={[-10, -10, -5]} intensity={0.5} />
+        <ambientLight intensity={0.4} />
+        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+        <directionalLight position={[-10, 5, -5]} intensity={0.5} />
+        <pointLight position={[0, -5, 0]} intensity={0.3} color="#ff6b35" />
         
-        <Environment preset="studio" />
+        <Environment preset="city" />
         
         <LaptopModel />
+        
+        {/* Ground plane for shadows */}
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
+          <planeGeometry args={[20, 20]} />
+          <shadowMaterial opacity={0.3} />
+        </mesh>
       </Canvas>
 
+      {/* Top Controls */}
       <div className="absolute top-6 left-6 space-y-3">
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => navigate('/')}
+          className="bg-charcoal px-4 py-2 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700 flex items-center gap-2"
+        >
+          <Home className="w-4 h-4" />
+          Home
+        </motion.button>
+      </div>
+
+      {/* Bottom Controls */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setIsLidOpen(!isLidOpen)}
-          className="bg-white px-4 py-2 rounded-lg shadow-lg font-medium text-accent hover:bg-gray-50 transition"
+          className="bg-charcoal px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700"
         >
           {isLidOpen ? 'Close Lid' : 'Open Lid'}
         </motion.button>
 
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setIsExploded(!isExploded)}
-          className="bg-white px-4 py-2 rounded-lg shadow-lg font-medium text-accent hover:bg-gray-50 transition flex items-center gap-2"
+          className="bg-charcoal px-6 py-3 rounded-lg shadow-elevated font-semibold text-white hover:bg-aluminumGray transition border border-gray-700 flex items-center gap-2"
         >
           {isExploded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           {isExploded ? 'Normal View' : 'Exploded View'}
         </motion.button>
+      </div>
+
+      {/* Watermark */}
+      <div className="absolute top-6 right-6">
+        <div className="text-white font-bold text-2xl tracking-tight opacity-50">
+          FRAMEX
+        </div>
       </div>
     </div>
   )
